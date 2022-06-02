@@ -1,0 +1,34 @@
+h3 {
+  color: #9f9a9f;
+}
+.textarea__consult {
+  background-color: white;
+  display: block;
+  width: 95%;
+}
+.container {
+  background-color: #a6a6a6;
+  margin: 40px 40px;
+  padding: 20px 30px;
+}
+.container__block {
+  display: block;
+  margin: 20px 0 0 0;
+}
+.container__top {
+  display: inline-block;
+  width: 37%;
+  margin: 1px 0 0 0;
+}
+.python {
+  margin: 0px 150px 0 0;
+}
+.postgresql {
+  margin: 0 0px 0 100px;
+}
+.container__top-consult {
+  height: 350px;
+}
+.white {
+  background-color: white;
+}
