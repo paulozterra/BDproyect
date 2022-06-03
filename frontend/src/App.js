@@ -1,34 +1,77 @@
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
-function App() {
+export const App = ({}) => {
+  const initialFormData = Object.freeze({
+    consult: "",
+    topk: "",
+  });
+  const [formData, updateFormData] = React.useState(initialFormData);
+  const handleChange = (e) => {
+    updateFormData({
+      ...formData,
+
+      // Trimming any whitespace
+      [e.target.name]: e.target.value.trim(),
+    });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    fetch("/api/create", {
+      method: "POST",
+      body: JSON.stringify({
+        consult: formData.consult,
+        topk: formData.topk,
+      }),
+    });
+  };
+
+  useEffect(() => {
+    fetch("/api")
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then((data) => console.log(data));
+  }, []);
+
   return (
-    <main class="container">
-      <textarea
-        class="textarea__consult white"
+    <main className="container">
+      <input
+        name="consult"
+        className="textarea__consult white"
         placeholder="Texto de la consulta"
-      ></textarea>
-      <div class="container__block">
-        <input class="white" placeholder="Tok K" />
-        <button type="submit" class="white">
+        onChange={handleChange}
+      ></input>
+      <div className="container__block">
+        <input
+          name="topk"
+          className="white"
+          placeholder="Tok K"
+          onChange={handleChange}
+        />
+        <button type="submit" className="white" onClick={handleSubmit}>
           Buscar
         </button>
       </div>
-      <div class="container__block">
-        <div class="container__top python">
+      <div className="container__block">
+        <div className="container__top python">
           <h2>TopK - Python</h2>
-          <div class="container__top-consult white"></div>
+          <div className="container__top-consult white"></div>
           <h3>Tiempo:</h3>
         </div>
-        <div class="container__top postgresql">
+        <div className="container__top postgresql">
           <h2>TopK - PostgreSQL</h2>
-          <div class="container__top-consult white"></div>
-          <div class="time">
+          <div className="container__top-consult white"></div>
+          <div className="time">
             <h3>Tiempo:</h3>
           </div>
         </div>
       </div>
     </main>
   );
-}
+};
 
 export default App;
