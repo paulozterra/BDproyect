@@ -1,3 +1,5 @@
 venv/
 .vscode/
 .env
+params.py
+__pycache__/
