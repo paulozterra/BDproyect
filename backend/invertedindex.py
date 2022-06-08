@@ -27,9 +27,10 @@ def generateIndexInv(tokens, data_path, stop_words):
         
         # for files in carpeta
         # open file[i]
-        # open file[i+1]
+        # open file[i+1]  // 
         # open filetemp
         
+        # se compara por tamaños tomar en cuenta el mayor tamaño
             # for j in range file 
                 # temp1=file[i]word[j]
                 # temp2=file[i+1]word[j]
